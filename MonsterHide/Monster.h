@@ -7,6 +7,11 @@ class Monster :
 {
 friend class Game;
 
+private:
+	Monster(const Monster& m);
+	Monster& operator=(const Monster& m);
+
+
 	Monster();
 	Monster(int posX,int posY);
 	~Monster();
@@ -23,7 +28,7 @@ friend class Game;
 	Directions direction;
 	int destination;
 
-	void move();
+	void makeStep();
 	void place(int posX,int posY);
 
 

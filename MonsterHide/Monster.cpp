@@ -19,7 +19,7 @@ Monster::~Monster()
 	//EMPTY
 }
 
-void Monster::move()
+void Monster::makeStep()
 {
 	//TODO
 }

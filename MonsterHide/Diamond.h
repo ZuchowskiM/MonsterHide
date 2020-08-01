@@ -4,6 +4,10 @@
 class Diamond
 {
 friend class Game;
+private:
+	Diamond(const Diamond& d);
+	Diamond& operator=(const Diamond& d);
+
 	Diamond();
 	Diamond(int posX, int posY);
 	~Diamond();

@@ -5,6 +5,11 @@
 class WinGame :
 	public Game
 {
+private:
+	WinGame(const WinGame& wg);
+	WinGame& operator=(const WinGame& wg);
+
+public:
 	WinGame();
 	~WinGame();
 

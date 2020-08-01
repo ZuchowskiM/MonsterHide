@@ -33,6 +33,9 @@ Game::Game()
 	player.place(49, 29);
 	monster.place(9, 29);
 
+	movesCount = 0;
+	diamondsCount = 0;
+
 	//here create pathfinder points list TODO
 
 }

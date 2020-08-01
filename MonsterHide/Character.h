@@ -3,6 +3,10 @@
 
 class Character
 {
+private:
+	Character(const Character& c);
+	Character& operator=(const Character& c);
+
 protected:
 	int posX;
 	int posY;

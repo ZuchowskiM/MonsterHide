@@ -6,6 +6,10 @@
 
 class Game
 {
+private:
+	Game(const Game& g);
+	Game& operator=(const Game& g);
+
 protected:
 	Game();
 	~Game();
@@ -18,7 +22,10 @@ protected:
 	{
 		Clear = 0,
 		Watched = 1,
-		Obstacle = 3
+		Obstacle = 3,
+		Player = 4,
+		Monster = 5,
+		Diamond = 6
 	};
 
 	States** grid;
