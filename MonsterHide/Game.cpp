@@ -25,15 +25,8 @@ Game::Game()
 		}
 	}
 
-	grid[2][3] = States::Obstacle;
-	grid[3][3] = States::Obstacle;
-	grid[4][3] = States::Obstacle;
-	grid[5][3] = States::Obstacle;
-
-	grid[10][55] = States::Obstacle;
-	grid[11][55] = States::Obstacle;
-	grid[12][55] = States::Obstacle;
-	grid[13][55] = States::Obstacle;
+	//PLACING OBSTACLES ON MAP
+	drawObstacles();
 
 	for (int i = 0; i < gridSizeY; i++)
 	{
@@ -397,131 +390,272 @@ void Game::drawMonsterVison()
 	{
 		//STRAIGHT LINE
 		if (monster.posX + 1 < gridSizeX && grid[monster.posY][monster.posX + 1] == States::Clear)
+		{
 			grid[monster.posY][monster.posX + 1] = States::Watched;
-		if (monster.posX + 2 < gridSizeX && grid[monster.posY][monster.posX + 2] == States::Clear)
-			grid[monster.posY][monster.posX + 2] = States::Watched;
-		if (monster.posX + 3 < gridSizeX && grid[monster.posY][monster.posX + 3] == States::Clear)
-			grid[monster.posY][monster.posX + 3] = States::Watched;
-		if (monster.posX + 4 < gridSizeX && grid[monster.posY][monster.posX + 4] == States::Clear)
-			grid[monster.posY][monster.posX + 4] = States::Watched;
-
+			if (monster.posX + 2 < gridSizeX && grid[monster.posY][monster.posX + 2] == States::Clear)
+			{
+				grid[monster.posY][monster.posX + 2] = States::Watched;
+				if (monster.posX + 3 < gridSizeX && grid[monster.posY][monster.posX + 3] == States::Clear)
+				{
+					grid[monster.posY][monster.posX + 3] = States::Watched;
+					if (monster.posX + 4 < gridSizeX && grid[monster.posY][monster.posX + 4] == States::Clear)
+					{
+						grid[monster.posY][monster.posX + 4] = States::Watched;
+					}
+						
+				}
+			}
+		}
+			
 		//UPPER PART
-		if (monster.posX + 3 < gridSizeX && monster.posY - 1 >= 0 && grid[monster.posY - 1][monster.posX + 3] == States::Clear)
-			grid[monster.posY - 1][monster.posX + 3] = States::Watched;
-		if (monster.posX + 2 < gridSizeX && monster.posY - 1 >= 0 && grid[monster.posY - 1][monster.posX + 2] == States::Clear)
-			grid[monster.posY - 1][monster.posX + 2] = States::Watched;
+		
 		if (monster.posX + 1 < gridSizeX && monster.posY - 1 >= 0 && grid[monster.posY - 1][monster.posX + 1] == States::Clear)
+		{
 			grid[monster.posY - 1][monster.posX + 1] = States::Watched;
-		if (monster.posX + 2 < gridSizeX && monster.posY - 2 >= 0 && grid[monster.posY - 2][monster.posX + 2] == States::Clear)
-			grid[monster.posY - 2][monster.posX + 2] = States::Watched;
+			if (monster.posX + 2 < gridSizeX && monster.posY - 2 >= 0 && grid[monster.posY - 2][monster.posX + 2] == States::Clear)
+			{
+				grid[monster.posY - 2][monster.posX + 2] = States::Watched;
+			}
 
+			if (monster.posX + 2 < gridSizeX && monster.posY - 1 >= 0 && grid[monster.posY - 1][monster.posX + 2] == States::Clear)
+			{
+				grid[monster.posY - 1][monster.posX + 2] = States::Watched;
+
+				if (monster.posX + 3 < gridSizeX && monster.posY - 1 >= 0 && grid[monster.posY - 1][monster.posX + 3] == States::Clear)
+				{
+					grid[monster.posY - 1][monster.posX + 3] = States::Watched;
+				}
+
+			}
+				
+		}
+			
 		//DOWN PART
-		if (monster.posX + 3 < gridSizeX && monster.posY + 1 < gridSizeY && grid[monster.posY + 1][monster.posX + 3] == States::Clear)
-			grid[monster.posY + 1][monster.posX + 3] = States::Watched;
-		if (monster.posX + 2 < gridSizeX && monster.posY + 1 < gridSizeY && grid[monster.posY + 1][monster.posX + 2] == States::Clear)
-			grid[monster.posY + 1][monster.posX + 2] = States::Watched;
 		if (monster.posX + 1 < gridSizeX && monster.posY + 1 < gridSizeY && grid[monster.posY + 1][monster.posX + 1] == States::Clear)
+		{
 			grid[monster.posY + 1][monster.posX + 1] = States::Watched;
-		if (monster.posX + 2 < gridSizeX && monster.posY + 2 < gridSizeY && grid[monster.posY + 2][monster.posX + 2] == States::Clear)
-			grid[monster.posY + 2][monster.posX + 2] = States::Watched;
+			if (monster.posX + 2 < gridSizeX && monster.posY + 2 < gridSizeY && grid[monster.posY + 2][monster.posX + 2] == States::Clear)
+			{
+				grid[monster.posY + 2][monster.posX + 2] = States::Watched;
+			}
 
+			if (monster.posX + 2 < gridSizeX && monster.posY + 1 < gridSizeY && grid[monster.posY + 1][monster.posX + 2] == States::Clear)
+			{
+				grid[monster.posY + 1][monster.posX + 2] = States::Watched;
+				if (monster.posX + 3 < gridSizeX && monster.posY + 1 < gridSizeY && grid[monster.posY + 1][monster.posX + 3] == States::Clear)
+				{
+					grid[monster.posY + 1][monster.posX + 3] = States::Watched;
+				}
+
+			}
+				
+		}
+			
 	}
 	else if (monster.direction == Monster::Directions::left)
 	{
 		//STRAIGHT LINE
 		if (monster.posX - 1 >= 0 && grid[monster.posY][monster.posX - 1] == States::Clear)
+		{
 			grid[monster.posY][monster.posX - 1] = States::Watched;
-		if (monster.posX - 2 >= 0 && grid[monster.posY][monster.posX - 2] == States::Clear)
-			grid[monster.posY][monster.posX - 2] = States::Watched;
-		if (monster.posX - 3 >= 0 && grid[monster.posY][monster.posX - 3] == States::Clear)
-			grid[monster.posY][monster.posX - 3] = States::Watched;
-		if (monster.posX - 4 >= 0 && grid[monster.posY][monster.posX - 4] == States::Clear)
-			grid[monster.posY][monster.posX - 4] = States::Watched;
-
+			if (monster.posX - 2 >= 0 && grid[monster.posY][monster.posX - 2] == States::Clear)
+			{
+				grid[monster.posY][monster.posX - 2] = States::Watched;
+				if (monster.posX - 3 >= 0 && grid[monster.posY][monster.posX - 3] == States::Clear)
+				{
+					grid[monster.posY][monster.posX - 3] = States::Watched;
+					if (monster.posX - 4 >= 0 && grid[monster.posY][monster.posX - 4] == States::Clear)
+						grid[monster.posY][monster.posX - 4] = States::Watched;
+				}	
+			}
+				
+		}
+			
 		//UPPER PART
-		if (monster.posX - 3 >= 0 && monster.posY - 1 >= 0 && grid[monster.posY - 1][monster.posX - 3] == States::Clear)
-			grid[monster.posY - 1][monster.posX - 3] = States::Watched;
-		if (monster.posX - 2 >= 0 && monster.posY - 1 >= 0 && grid[monster.posY - 1][monster.posX - 2] == States::Clear)
-			grid[monster.posY - 1][monster.posX - 2] = States::Watched;
 		if (monster.posX - 1 >= 0 && monster.posY - 1 >= 0 && grid[monster.posY - 1][monster.posX - 1] == States::Clear)
+		{
 			grid[monster.posY - 1][monster.posX - 1] = States::Watched;
-		if (monster.posX - 2 >= 0 && monster.posY - 2 >= 0 && grid[monster.posY - 2][monster.posX - 2] == States::Clear)
-			grid[monster.posY - 2][monster.posX - 2] = States::Watched;
+			if (monster.posX - 2 >= 0 && monster.posY - 2 >= 0 && grid[monster.posY - 2][monster.posX - 2] == States::Clear)
+				grid[monster.posY - 2][monster.posX - 2] = States::Watched;
 
+			if (monster.posX - 2 >= 0 && monster.posY - 1 >= 0 && grid[monster.posY - 1][monster.posX - 2] == States::Clear)
+			{
+				grid[monster.posY - 1][monster.posX - 2] = States::Watched;
+				if (monster.posX - 3 >= 0 && monster.posY - 1 >= 0 && grid[monster.posY - 1][monster.posX - 3] == States::Clear)
+					grid[monster.posY - 1][monster.posX - 3] = States::Watched;
+			}
+		}
+			
 		//DOWN PART
-		if (monster.posX - 3 >= 0 && monster.posY + 1 < gridSizeY && grid[monster.posY + 1][monster.posX - 3] == States::Clear)
-			grid[monster.posY + 1][monster.posX - 3] = States::Watched;
-		if (monster.posX - 2 >= 0 && monster.posY + 1 < gridSizeY && grid[monster.posY + 1][monster.posX - 2] == States::Clear)
-			grid[monster.posY + 1][monster.posX - 2] = States::Watched;
 		if (monster.posX - 1 >= 0 && monster.posY + 1 < gridSizeY && grid[monster.posY + 1][monster.posX - 1] == States::Clear)
+		{
 			grid[monster.posY + 1][monster.posX - 1] = States::Watched;
-		if (monster.posX - 2 >= 0 && monster.posY + 2 < gridSizeY && grid[monster.posY + 2][monster.posX - 2] == States::Clear)
-			grid[monster.posY + 2][monster.posX - 2] = States::Watched;
+			if (monster.posX - 2 >= 0 && monster.posY + 2 < gridSizeY && grid[monster.posY + 2][monster.posX - 2] == States::Clear)
+				grid[monster.posY + 2][monster.posX - 2] = States::Watched;
+
+			if (monster.posX - 2 >= 0 && monster.posY + 1 < gridSizeY && grid[monster.posY + 1][monster.posX - 2] == States::Clear)
+			{
+				grid[monster.posY + 1][monster.posX - 2] = States::Watched;
+				if (monster.posX - 3 >= 0 && monster.posY + 1 < gridSizeY && grid[monster.posY + 1][monster.posX - 3] == States::Clear)
+					grid[monster.posY + 1][monster.posX - 3] = States::Watched;
+			}
+
+		}
+			
 	}
 	else if (monster.direction == Monster::Directions::up)
 	{
 		//STRAIGHT LINE
 		if (monster.posY - 1 >= 0 && grid[monster.posY - 1][monster.posX] == States::Clear)
+		{
 			grid[monster.posY - 1][monster.posX] = States::Watched;
-		if (monster.posY - 2 >= 0 && grid[monster.posY - 2][monster.posX] == States::Clear)
-			grid[monster.posY - 2][monster.posX] = States::Watched;
-		if (monster.posY - 3 >= 0 && grid[monster.posY - 3][monster.posX] == States::Clear)
-			grid[monster.posY - 3][monster.posX] = States::Watched;
-		if (monster.posY - 4 >= 0 && grid[monster.posY - 4][monster.posX] == States::Clear)
-			grid[monster.posY - 4][monster.posX] = States::Watched;
+			if (monster.posY - 2 >= 0 && grid[monster.posY - 2][monster.posX] == States::Clear)
+			{
+				grid[monster.posY - 2][monster.posX] = States::Watched;
+				if (monster.posY - 3 >= 0 && grid[monster.posY - 3][monster.posX] == States::Clear)
+				{
+					grid[monster.posY - 3][monster.posX] = States::Watched;
+					if (monster.posY - 4 >= 0 && grid[monster.posY - 4][monster.posX] == States::Clear)
+						grid[monster.posY - 4][monster.posX] = States::Watched;
+				}
+			}
+				
+		}
+			
 
 		//RIGHT PART
 		if (monster.posY - 1 >= 0 && monster.posX + 1 < gridSizeX && grid[monster.posY - 1][monster.posX + 1] == States::Clear)
+		{
 			grid[monster.posY - 1][monster.posX + 1] = States::Watched;
-		if (monster.posY - 2 >= 0 && monster.posX + 1 < gridSizeX && grid[monster.posY - 2][monster.posX + 1] == States::Clear)
-			grid[monster.posY - 2][monster.posX + 1] = States::Watched;
-		if (monster.posY - 3 >= 0 && monster.posX + 1 < gridSizeX && grid[monster.posY - 3][monster.posX + 1] == States::Clear)
-			grid[monster.posY - 3][monster.posX + 1] = States::Watched;
-		if (monster.posY - 2 >= 0 && monster.posX + 2 < gridSizeX && grid[monster.posY - 2][monster.posX + 2] == States::Clear)
-			grid[monster.posY - 2][monster.posX + 2] = States::Watched;
+			if (monster.posY - 2 >= 0 && monster.posX + 2 < gridSizeX && grid[monster.posY - 2][monster.posX + 2] == States::Clear)
+				grid[monster.posY - 2][monster.posX + 2] = States::Watched;
 
+			if (monster.posY - 2 >= 0 && monster.posX + 1 < gridSizeX && grid[monster.posY - 2][monster.posX + 1] == States::Clear)
+			{
+				grid[monster.posY - 2][monster.posX + 1] = States::Watched;
+				if (monster.posY - 3 >= 0 && monster.posX + 1 < gridSizeX && grid[monster.posY - 3][monster.posX + 1] == States::Clear)
+					grid[monster.posY - 3][monster.posX + 1] = States::Watched;
+
+			}
+				
+		}
+			
 		//LEFT PART
 		if (monster.posY - 1 >= 0 && monster.posX - 1 >= 0 && grid[monster.posY - 1][monster.posX - 1] == States::Clear)
+		{
 			grid[monster.posY - 1][monster.posX - 1] = States::Watched;
-		if (monster.posY - 2 >= 0 && monster.posX - 1 >= 0 && grid[monster.posY - 2][monster.posX - 1] == States::Clear)
-			grid[monster.posY - 2][monster.posX - 1] = States::Watched;
-		if (monster.posY - 3 >= 0 && monster.posX - 1 >= 0 && grid[monster.posY - 3][monster.posX - 1] == States::Clear)
-			grid[monster.posY - 3][monster.posX - 1] = States::Watched;
-		if (monster.posY - 2 >= 0 && monster.posX - 2 >= 0 && grid[monster.posY - 2][monster.posX - 2] == States::Clear)
-			grid[monster.posY - 2][monster.posX - 2] = States::Watched;
+			if (monster.posY - 2 >= 0 && monster.posX - 2 >= 0 && grid[monster.posY - 2][monster.posX - 2] == States::Clear)
+				grid[monster.posY - 2][monster.posX - 2] = States::Watched;
 
-
+			if (monster.posY - 2 >= 0 && monster.posX - 1 >= 0 && grid[monster.posY - 2][monster.posX - 1] == States::Clear)
+			{
+				grid[monster.posY - 2][monster.posX - 1] = States::Watched;
+				if (monster.posY - 3 >= 0 && monster.posX - 1 >= 0 && grid[monster.posY - 3][monster.posX - 1] == States::Clear)
+					grid[monster.posY - 3][monster.posX - 1] = States::Watched;
+			}
+				
+		}
+		
 	}
 	else if (monster.direction == Monster::Directions::down)
 	{
 		//STRAIGHT LINE
 		if (monster.posY + 1 < gridSizeY && grid[monster.posY + 1][monster.posX] == States::Clear)
+		{
 			grid[monster.posY + 1][monster.posX] = States::Watched;
-		if (monster.posY + 2 < gridSizeY && grid[monster.posY + 2][monster.posX] == States::Clear)
-			grid[monster.posY + 2][monster.posX] = States::Watched;
-		if (monster.posY + 3 < gridSizeY && grid[monster.posY + 3][monster.posX] == States::Clear)
-			grid[monster.posY + 3][monster.posX] = States::Watched;
-		if (monster.posY + 4 < gridSizeY && grid[monster.posY + 4][monster.posX] == States::Clear)
-			grid[monster.posY + 4][monster.posX] = States::Watched;
-
+			if (monster.posY + 2 < gridSizeY && grid[monster.posY + 2][monster.posX] == States::Clear)
+			{
+				grid[monster.posY + 2][monster.posX] = States::Watched;
+				if (monster.posY + 3 < gridSizeY && grid[monster.posY + 3][monster.posX] == States::Clear)
+				{
+					grid[monster.posY + 3][monster.posX] = States::Watched;
+					if (monster.posY + 4 < gridSizeY && grid[monster.posY + 4][monster.posX] == States::Clear)
+						grid[monster.posY + 4][monster.posX] = States::Watched;
+				}
+					
+			}
+		}
+				
+			
 		//RIGHT PART
 		if (monster.posY + 1 < gridSizeY && monster.posX + 1 < gridSizeX && grid[monster.posY + 1][monster.posX + 1] == States::Clear)
+		{
 			grid[monster.posY + 1][monster.posX + 1] = States::Watched;
-		if (monster.posY + 2 < gridSizeY && monster.posX + 1 < gridSizeX && grid[monster.posY + 2][monster.posX + 1] == States::Clear)
-			grid[monster.posY + 2][monster.posX + 1] = States::Watched;
-		if (monster.posY + 3 < gridSizeY && monster.posX + 1 < gridSizeX && grid[monster.posY + 3][monster.posX + 1] == States::Clear)
-			grid[monster.posY + 3][monster.posX + 1] = States::Watched;
-		if (monster.posY + 2 < gridSizeY && monster.posX + 2 < gridSizeX && grid[monster.posY + 2][monster.posX + 2] == States::Clear)
-			grid[monster.posY + 2][monster.posX + 2] = States::Watched;
+			if (monster.posY + 2 < gridSizeY && monster.posX + 2 < gridSizeX && grid[monster.posY + 2][monster.posX + 2] == States::Clear)
+				grid[monster.posY + 2][monster.posX + 2] = States::Watched;
 
+			if (monster.posY + 2 < gridSizeY && monster.posX + 1 < gridSizeX && grid[monster.posY + 2][monster.posX + 1] == States::Clear)
+			{
+				grid[monster.posY + 2][monster.posX + 1] = States::Watched;
+				if (monster.posY + 3 < gridSizeY && monster.posX + 1 < gridSizeX && grid[monster.posY + 3][monster.posX + 1] == States::Clear)
+					grid[monster.posY + 3][monster.posX + 1] = States::Watched;
+			}
+				
+		}
+			
+	
 		//LEFT PART
 		if (monster.posY + 1 < gridSizeY && monster.posX - 1 >= 0 && grid[monster.posY + 1][monster.posX - 1] == States::Clear)
+		{
 			grid[monster.posY + 1][monster.posX - 1] = States::Watched;
-		if (monster.posY + 2 < gridSizeY && monster.posX - 1 >= 0 && grid[monster.posY + 2][monster.posX - 1] == States::Clear)
-			grid[monster.posY + 2][monster.posX - 1] = States::Watched;
-		if (monster.posY + 3 < gridSizeY && monster.posX - 1 >= 0 && grid[monster.posY + 3][monster.posX - 1] == States::Clear)
-			grid[monster.posY + 3][monster.posX - 1] = States::Watched;
-		if (monster.posY + 2 < gridSizeY && monster.posX - 2 >= 0 && grid[monster.posY + 2][monster.posX - 2] == States::Clear)
-			grid[monster.posY + 2][monster.posX - 2] = States::Watched;
+			if (monster.posY + 2 < gridSizeY && monster.posX - 2 >= 0 && grid[monster.posY + 2][monster.posX - 2] == States::Clear)
+				grid[monster.posY + 2][monster.posX - 2] = States::Watched;
+
+			if (monster.posY + 2 < gridSizeY && monster.posX - 1 >= 0 && grid[monster.posY + 2][monster.posX - 1] == States::Clear)
+			{
+				grid[monster.posY + 2][monster.posX - 1] = States::Watched;
+				if (monster.posY + 3 < gridSizeY && monster.posX - 1 >= 0 && grid[monster.posY + 3][monster.posX - 1] == States::Clear)
+					grid[monster.posY + 3][monster.posX - 1] = States::Watched;
+			}
+				
+		}
+			
 	}
+}
+
+void Game::drawObstacles()
+{
+	grid[2][3] = States::Obstacle;
+	grid[3][3] = States::Obstacle;
+	grid[4][3] = States::Obstacle;
+	grid[5][3] = States::Obstacle;
+
+	grid[10][55] = States::Obstacle;
+	grid[11][55] = States::Obstacle;
+	grid[12][55] = States::Obstacle;
+	grid[13][55] = States::Obstacle;
+
+	grid[2][15] = States::Obstacle;
+	grid[3][15] = States::Obstacle;
+	grid[4][15] = States::Obstacle;
+	grid[4][16] = States::Obstacle;
+	grid[4][17] = States::Obstacle;
+	grid[4][18] = States::Obstacle;
+
+	grid[7][30] = States::Obstacle;
+	grid[7][31] = States::Obstacle;
+	grid[8][30] = States::Obstacle;
+	grid[8][31] = States::Obstacle;
+
+	grid[9][15] = States::Obstacle;
+	grid[10][15] = States::Obstacle;
+	grid[11][15] = States::Obstacle;
+	grid[11][16] = States::Obstacle;
+	grid[11][17] = States::Obstacle;
+	grid[11][18] = States::Obstacle;
+
+	grid[2][40] = States::Obstacle;
+	grid[3][40] = States::Obstacle;
+	grid[4][40] = States::Obstacle;
+	grid[5][40] = States::Obstacle;
+	grid[5][41] = States::Obstacle;
+	grid[5][41] = States::Obstacle;
+
+	grid[9][40] = States::Obstacle;
+	grid[10][40] = States::Obstacle;
+	grid[11][40] = States::Obstacle;
+	grid[11][41] = States::Obstacle;
+	grid[11][42] = States::Obstacle;
+	grid[11][43] = States::Obstacle;
+
 }

@@ -51,6 +51,7 @@ protected:
 	void Analize();
 	void constructMonsterPath();
 	void drawMonsterVison();
+	void drawObstacles();
 	virtual bool show() = 0;
 
 public:
