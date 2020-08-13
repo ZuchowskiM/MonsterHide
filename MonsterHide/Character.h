@@ -7,7 +7,7 @@ private:
 	Character(const Character& c);
 	Character& operator=(const Character& c);
 
-public:
+protected:
 	int posX;
 	int posY;
 

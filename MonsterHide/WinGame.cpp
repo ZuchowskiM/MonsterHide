@@ -5,7 +5,7 @@ using std::cout;
 
 WinGame::WinGame(): Game()
 {
-	//EMPTY
+	hout = GetStdHandle(STD_OUTPUT_HANDLE);
 }
 
 WinGame::~WinGame()
@@ -21,7 +21,9 @@ bool WinGame::show()
 
 	if (gameEnd)
 	{
+		SetConsoleTextAttribute(hout, FOREGROUND_RED);
 		cout << "GAME OVER" << std::endl;
+		SetConsoleTextAttribute(hout, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
 		return true;
 	}
 	else
@@ -32,14 +34,17 @@ bool WinGame::show()
 			{
 				if (grid[i][j] == States::Player)
 				{
+					SetConsoleTextAttribute(hout, FOREGROUND_GREEN);
 					cout << "P";
 				}
 				else if (grid[i][j] == States::Monster)
 				{
+					SetConsoleTextAttribute(hout, FOREGROUND_RED);
 					cout << "M";
 				}
 				else if (grid[i][j] == States::Diamond)
 				{
+					SetConsoleTextAttribute(hout, FOREGROUND_BLUE);
 					cout << "^";
 				}
 				else if (grid[i][j] == States::Clear)
@@ -48,19 +53,22 @@ bool WinGame::show()
 				}
 				else if (grid[i][j] == States::Obstacle)
 				{
+					SetConsoleTextAttribute(hout, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
 					cout << "#";
 				}
 				else if (grid[i][j] == States::Watched)
 				{
+					SetConsoleTextAttribute(hout, FOREGROUND_GREEN | FOREGROUND_RED);
 					cout << "!";
 				}
 			}
 			cout << std::endl;
 
 		}
+		SetConsoleTextAttribute(hout, FOREGROUND_BLUE);
 		cout << "DIAMONDS COUNT: " << diamondsCount << std::endl;
-		cout << "player posY: " << player.posY << std::endl;
-		cout << "player posX: " << player.posX << std::endl; //zmienic potem na private!!!
+		//cout << "player posY: " << player.posY << std::endl;
+		//cout << "player posX: " << player.posX << std::endl; //zmienic potem na private!!!
 		return false;
 	}
 
