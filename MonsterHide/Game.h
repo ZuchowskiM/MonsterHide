@@ -4,6 +4,8 @@
 #include"Monster.h"
 #include"Diamond.h"
 #include<vector>
+#include<cmath>
+#include<algorithm>
 
 class Game
 {
@@ -36,18 +38,20 @@ protected:
 	int movesCount;
 	int diamondsCount;
 
-	std::vector<std::pair<std::pair<int,int>,std::pair<int,int>>> path;
+	std::vector<std::pair<int,int>> path;
+	int monsterPathCurrentStep;
 	int monsterTargetPointX;
 	int monsterTargetPointY;
 	bool monsterTargetActive;
 
 	bool diamondOnBoard;
 
-	
+	bool gameEnd;
 
 	void Analize();
 	void constructMonsterPath();
-	virtual void show() = 0;
+	void drawMonsterVison();
+	virtual bool show() = 0;
 
 public:
 	void getPlayerMove(int keyNumber);

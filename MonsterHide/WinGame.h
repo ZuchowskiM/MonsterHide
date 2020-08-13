@@ -13,7 +13,7 @@ public:
 	WinGame();
 	~WinGame();
 
-	void show();
+	bool show();
 };
 
 #endif

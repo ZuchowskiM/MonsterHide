@@ -17,18 +17,22 @@ int main()
 
 	WinGame g1;
     bool flag = false;
+    bool endGame = false;
 	
-    while (true)
+    while (!endGame)
     {
         system("cls");
-        g1.show();
+        endGame = g1.show();
 
-        int c = 0;
+        if (endGame)
+            break;
+
+        int key = 0;
         while (!flag)
         {
-            c = 0;
+            key = 0;
 
-            switch ((c = _getch())) {
+            switch ((key = _getch())) {
             case KEY_UP:
             case KEY_DOWN:
             case KEY_LEFT:
@@ -41,7 +45,7 @@ int main()
 
         }
         flag = false;
-        g1.getPlayerMove(c);
+        g1.getPlayerMove(key);
     }
 
 		//system("cls");
