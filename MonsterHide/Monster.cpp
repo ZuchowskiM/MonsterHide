@@ -4,14 +4,12 @@ Monster::Monster():
 	Character()
 {
 	direction = Directions::right;
-	destination = -1;
 }
 
 Monster::Monster(int posX, int posY) : 
 	Character(posX, posY)
 {
 	direction = Directions::right;
-	destination = -1;
 }
 
 Monster::~Monster()

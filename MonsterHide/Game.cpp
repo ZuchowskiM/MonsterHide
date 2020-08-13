@@ -44,7 +44,6 @@ Game::Game()
 	player.place(10, 9);
 	monster.place(50, 9);
 
-	movesCount = 0;
 	diamondsCount = 0;
 
 	monsterTargetPointX = 0;
@@ -300,10 +299,6 @@ void Game::constructMonsterPath()
 			}
 		}
 
-
-
-		
-		
 		/*//UP
 		cost = std::abs(monsterTargetPointX - path.back().first) + std::abs(monsterTargetPointY - (path.back().second - 1));
 		

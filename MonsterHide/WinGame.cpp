@@ -45,7 +45,7 @@ bool WinGame::show()
 				else if (grid[i][j] == States::Diamond)
 				{
 					SetConsoleTextAttribute(hout, FOREGROUND_BLUE);
-					cout << "^";
+					cout << "*";
 				}
 				else if (grid[i][j] == States::Clear)
 				{

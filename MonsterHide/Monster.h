@@ -26,7 +26,6 @@ private:
 	};
 
 	Directions direction;
-	int destination;
 
 	void makeStep(int goToX, int goToY);
 	void place(int posX,int posY);

@@ -35,7 +35,6 @@ protected:
 	int gridSizeX;
 	int gridSizeY;
 
-	int movesCount;
 	int diamondsCount;
 
 	std::vector<std::pair<int,int>> path;
