@@ -1,7 +1,7 @@
 #ifndef Monster_h
 #define Monster_h
-
 #include "Character.h"
+
 class Monster :
 	public Character
 {
