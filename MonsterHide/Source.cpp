@@ -70,7 +70,7 @@ int main()
             system("cls");
             g1.writeInstruction();
             cout << "Nacisnij dowolny klawisz aby powrocic do menu" << endl;
-            _getch();
+            system("pause");
             break;
         case 3:
             close = true;
