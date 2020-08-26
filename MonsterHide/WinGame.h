@@ -17,6 +17,7 @@ public:
 	~WinGame();
 
 	bool show();
+	void writeInstruction();
 };
 
 #endif

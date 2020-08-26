@@ -2,6 +2,7 @@
 #include<iostream>
 
 using std::cout;
+using std::endl;
 
 WinGame::WinGame(): Game()
 {
@@ -74,4 +75,23 @@ bool WinGame::show()
 	}
 
 	
+}
+
+void WinGame::writeInstruction()
+{
+	SetConsoleTextAttribute(hout, FOREGROUND_GREEN);
+	cout << "P - To jest gracz czyli Ty, sterujesz nim za pomoca strzalek" << endl;
+
+	SetConsoleTextAttribute(hout, FOREGROUND_RED);
+	cout << "M - To jest potwor, unikaj go inaczej przegrasz" << endl;
+
+	SetConsoleTextAttribute(hout, FOREGROUND_GREEN | FOREGROUND_RED);
+	cout << "! - To jest znacznik wizji potwora, jesli cie zobaczy przegrasz" << endl;
+
+	SetConsoleTextAttribute(hout, FOREGROUND_BLUE);
+	cout << "* - To jest diament twoj cel, zbierz ich jak najwiecej" << endl;
+
+	SetConsoleTextAttribute(hout, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
+	cout << "# - To jest przeszkoda, mozesz sie za nia ukryc przed potworem" << endl << endl;
+
 }
