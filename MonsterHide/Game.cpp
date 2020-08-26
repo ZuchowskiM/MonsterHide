@@ -89,17 +89,21 @@ Game::Game()
 
 Game::~Game()
 {
-	for (int i = 0; i < gridSizeY; i++)
+	if (grid)
 	{
-		delete[] grid[i];
+		for (int i = 0; i < gridSizeY; i++)
+		{
+			delete[] grid[i];
+		}
+		delete[] grid;
 	}
-	delete[] grid;
+	
 }
 
 void Game::Analize()
 {
 	//CHEKING IF PLAYER IS ON VISION
-	if (grid[player.posY][player.posX] == States::Watched)
+	if (grid[player.posY][player.posX] == States::Watched || (player.posX==monster.posX && player.posY==monster.posY))
 	{
 		gameEnd = true;
 		return;
@@ -213,23 +217,6 @@ void Game::constructMonsterPath()
 	int cost1 = 0,cost2 = 0,cost3 = 0,cost4 = 0;
 	int previousNode = 0;
 
-	/*bool** nodes = new bool* [gridSizeY];
-
-	for (int i = 0; i < gridSizeY; i++)
-	{
-		nodes[i] = new bool[gridSizeX];
-	}
-
-	for (int i = 0; i < gridSizeY; i++)
-	{
-		for (int j = 0; j < gridSizeX; j++)
-		{
-			nodes[i][j] = false;
-		}
-	}
-	
-	nodes[monster.posY][monster.posX] = true;*/
-
 	while (!pointFound)
 	{
 		cost1 = 0; cost2 = 0; cost3 = 0; cost4 = 0;
@@ -299,73 +286,6 @@ void Game::constructMonsterPath()
 			}
 		}
 
-		/*//UP
-		cost = std::abs(monsterTargetPointX - path.back().first) + std::abs(monsterTargetPointY - (path.back().second - 1));
-		
-		if (grid[path.back().second - 1][path.back().first] != States::Obstacle && cost < currentcost)
-		{
-			currentcost = cost;
-			path.emplace_back(path.back().first, path.back().second - 1);
-			
-
-			if (path.back().first == monsterTargetPointX && path.back().second == monsterTargetPointY)
-			{
-				break;
-			}
-		}
-
-		//RIGHT
-		cost = std::abs(monsterTargetPointX - (path.back().first + 1)) + std::abs(monsterTargetPointY - (path.back().second));
-		if (grid[path.back().second][path.back().first + 1] != States::Obstacle && cost < currentcost)
-		{
-			currentcost = cost;
-
-			if(path.size() > 1)
-				path.pop_back();
-
-			path.emplace_back(path.back().first + 1, path.back().second);
-			
-
-			if (path.back().first == monsterTargetPointX && path.back().second == monsterTargetPointY)
-			{
-				break;
-			}
-		}
-
-		//DOWN
-		cost = std::abs(monsterTargetPointX - path.back().first) + std::abs(monsterTargetPointY - (path.back().second + 1));
-		if (grid[path.back().second + 1][path.back().first] != States::Obstacle && cost < currentcost)
-		{
-			currentcost = cost;
-
-			if (path.size() > 1)
-				path.pop_back();
-
-			path.emplace_back(path.back().first, path.back().second + 1);
-			
-
-			if (path.back().first == monsterTargetPointX && path.back().second == monsterTargetPointY)
-			{
-				break;
-			}
-		}
-
-		//LEFT
-		cost = std::abs(monsterTargetPointX - (path.back().first - 1)) + std::abs(monsterTargetPointY - (path.back().second));
-		if (grid[path.back().second][path.back().first - 1] != States::Obstacle && cost < currentcost)
-		{
-			currentcost = cost;
-
-			if (path.size() > 1)
-				path.pop_back();
-
-			path.emplace_back(path.back().first -1, path.back().second);
-
-			if (path.back().first == monsterTargetPointX && path.back().second == monsterTargetPointY)
-			{
-				break;
-			}
-		}*/
 	}
 }
 

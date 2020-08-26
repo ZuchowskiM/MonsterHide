@@ -67,8 +67,9 @@ bool WinGame::show()
 		}
 		SetConsoleTextAttribute(hout, FOREGROUND_BLUE);
 		cout << "DIAMONDS COUNT: " << diamondsCount << std::endl;
+		//DEBUG LINES
 		//cout << "player posY: " << player.posY << std::endl;
-		//cout << "player posX: " << player.posX << std::endl; //zmienic potem na private!!!
+		//cout << "player posX: " << player.posX << std::endl;
 		return false;
 	}
 

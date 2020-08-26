@@ -48,8 +48,6 @@ int main()
         g1.getPlayerMove(key);
     }
 
-		//system("cls");
-	//}
 
 	return 0;
 }
